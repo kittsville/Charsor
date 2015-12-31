@@ -35,7 +35,7 @@ currentTime = time()
 
 with open("cursor_%d.csv" % currentTime,'w+') as cursorLogFile:
     for position in cursorPositions:
-        print >> cursorLogFile, position
+        print >> cursorLogFile, str(position[0]) + ',' + str(position[1])
 
 hm = heatmap.Heatmap()
 img = hm.heatmap(cursorPositions, dotsize=15, size=(screenWidth - 1, screenHeight - 1), area=((0, 0), (screenWidth - 1, screenHeight - 1)))
