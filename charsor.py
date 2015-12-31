@@ -37,10 +37,14 @@ currentTime = time()
 if not os.path.exists('output'):
     os.makedirs('output')
 
+# Saves all measured cursor positions to a Comma Separated Value file
+# You can open this in Excel, R or any text editor
 with open("output/cursor_%d.csv" % currentTime,'w+') as cursorLogFile:
     for position in cursorPositions:
         print >> cursorLogFile, str(position[0]) + ',' + str(position[1])
 
+# Generates heatmap
+# http://jjguy.com/heatmap/
 hm = heatmap.Heatmap()
 img = hm.heatmap(cursorPositions, dotsize=15, size=(screenWidth - 1, screenHeight - 1), area=((0, 0), (screenWidth - 1, screenHeight - 1)))
 img.save("output/heatmap_%d.png" % currentTime)
