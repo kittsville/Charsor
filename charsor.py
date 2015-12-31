@@ -2,6 +2,7 @@ import  Tkinter
 from    time    import sleep
 from    time    import time
 import  heatmap
+import  os
 
 SAMPLE_FREQUENCY = 10 # How many times a second to poll the cursor position
 
@@ -33,10 +34,13 @@ except KeyboardInterrupt:
 # Function is only used once so that the heatmap/csv file names don't differ
 currentTime = time()
 
-with open("cursor_%d.csv" % currentTime,'w+') as cursorLogFile:
+if not os.path.exists('output'):
+    os.makedirs('output')
+
+with open("output/cursor_%d.csv" % currentTime,'w+') as cursorLogFile:
     for position in cursorPositions:
         print >> cursorLogFile, str(position[0]) + ',' + str(position[1])
 
 hm = heatmap.Heatmap()
 img = hm.heatmap(cursorPositions, dotsize=15, size=(screenWidth - 1, screenHeight - 1), area=((0, 0), (screenWidth - 1, screenHeight - 1)))
-img.save("heatmap_%d.png" % currentTime)
+img.save("output/heatmap_%d.png" % currentTime)

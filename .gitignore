@@ -1,6 +1,5 @@
 # Charsor specific files
-heatmap_*.png
-cursor_*.csv
+output/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
