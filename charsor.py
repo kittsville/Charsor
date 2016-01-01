@@ -1,6 +1,6 @@
 import  Tkinter
 from    time    import sleep
-from    time    import time
+from    time    import strftime
 import  heatmap
 import  os
 
@@ -32,14 +32,14 @@ except KeyboardInterrupt:
     pass
 
 # Function is only used once so that the heatmap/csv file names don't differ
-currentTime = time()
+timestamp = strftime("%Y-%m-%dT%H%M%S")
 
 if not os.path.exists('output'):
     os.makedirs('output')
 
 # Saves all measured cursor positions to a Comma Separated Value file
 # You can open this in Excel, R or any text editor
-with open("output/cursor_%d.csv" % currentTime,'w+') as cursorLogFile:
+with open("output/cursor_%s.csv" % timestamp,'w+') as cursorLogFile:
     for position in cursorPositions:
         print >> cursorLogFile, str(position[0]) + ',' + str(position[1])
 
@@ -47,4 +47,4 @@ with open("output/cursor_%d.csv" % currentTime,'w+') as cursorLogFile:
 # http://jjguy.com/heatmap/
 hm = heatmap.Heatmap()
 img = hm.heatmap(cursorPositions, dotsize=15, size=(screenWidth - 1, screenHeight - 1), area=((0, 0), (screenWidth - 1, screenHeight - 1)))
-img.save("output/heatmap_%d.png" % currentTime)
+img.save("output/heatmap_%s.png" % timestamp)
