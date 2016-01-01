@@ -46,5 +46,5 @@ with open("output/cursor_%s.csv" % timestamp,'w+') as cursorLogFile:
 # Generates heatmap
 # http://jjguy.com/heatmap/
 hm = heatmap.Heatmap()
-img = hm.heatmap(cursorPositions, dotsize=15, size=(screenWidth - 1, screenHeight - 1), area=((0, 0), (screenWidth - 1, screenHeight - 1)))
+img = hm.heatmap(cursorPositions, dotsize=25, scheme='pbj', size=(screenWidth - 1, screenHeight - 1), area=((0, 0), (screenWidth, screenHeight)))
 img.save("output/heatmap_%s.png" % timestamp)
