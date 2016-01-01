@@ -52,7 +52,7 @@ print 'Saved CSV of cursor positions to ' + CSVPath
 # Generates heatmap
 # http://jjguy.com/heatmap/
 hm = heatmap.Heatmap()
-img = hm.heatmap(cursorPositions, dotsize=25, scheme='pbj', size=(screenWidth - 1, screenHeight - 1), area=((0, 0), (screenWidth, screenHeight)))
+img = hm.heatmap(cursorPositions, dotsize=60, scheme='pbj', size=(screenWidth - 1, screenHeight - 1), area=((0, 0), (screenWidth, screenHeight)))
 img.save(MapPath)
 
 print 'Saved heatmap of cursor positions to ' + MapPath
