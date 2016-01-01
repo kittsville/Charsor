@@ -4,7 +4,7 @@ from    time    import strftime
 import  heatmap
 import  os
 
-SAMPLE_FREQUENCY = 10 # How many times a second to poll the cursor position
+SAMPLE_INTERVAL = 0.1 # How often, in seconds, to poll the cursor position
 
 # Thanks rectangletangle
 cursor = Tkinter.Tk()
@@ -27,7 +27,7 @@ try:
         
         cursorPositions.append((horizontalPos, verticalPos))
         
-        sleep(0.1)
+        sleep(SAMPLE_INTERVAL)
 except KeyboardInterrupt:
     pass
 
