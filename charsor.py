@@ -4,7 +4,7 @@ from    time    import strftime
 import  heatmap
 import  os
 
-SAMPLE_INTERVAL = 0.1 # How often, in seconds, to poll the cursor position
+SAMPLE_INTERVAL = 0.05 # How often, in seconds, to poll the cursor position
 
 # Thanks rectangletangle
 cursor = Tkinter.Tk()
